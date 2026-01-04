@@ -1,26 +1,330 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════
+   🏜️ RIMAL - رمال - Design System
+   Les Sables de l'Esprit - Desert Oriental Theme
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────
+   LIGHT MODE - Sables du Jour
+   ───────────────────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --background: #FAF6F1;
+  --background-subtle: #F5EDE3;
+  --background-muted: #EDE4D8;
+
+  /* Foregrounds */
+  --foreground: #2C1810;
+  --foreground-muted: #6B5344;
+  --foreground-subtle: #8B7355;
+
+  /* Primary - Terracotta */
+  --primary: #C4725E;
+  --primary-hover: #B5634F;
+  --primary-muted: #D4917F;
+
+  /* Secondary - Ochre Gold */
+  --secondary: #D4A853;
+  --secondary-hover: #C49843;
+  --secondary-muted: #E4C883;
+
+  /* Accent - Deep Sand */
+  --accent: #A67C52;
+  --accent-hover: #8B6542;
+
+  /* Surface colors */
+  --card: #FFFFFF;
+  --card-hover: #FDF9F5;
+  --border: #E8D4B8;
+  --border-subtle: #F0E6DA;
+
+  /* Semantic */
+  --success: #7A9E7E;
+  --warning: #D4A853;
+  --error: #C4725E;
+
+  /* Special */
+  --oasis: linear-gradient(135deg, #7EB5A6 0%, #5A9E8F 100%);
+  --dune-shadow: rgba(139, 115, 85, 0.1);
 }
 
+/* ─────────────────────────────────────────────────────────────────
+   DARK MODE - Nuit du Désert
+   ───────────────────────────────────────────────────────────────── */
+.dark {
+  /* Backgrounds */
+  --background: #1A1512;
+  --background-subtle: #231E19;
+  --background-muted: #2D251F;
+
+  /* Foregrounds */
+  --foreground: #F0E6D8;
+  --foreground-muted: #C4B5A3;
+  --foreground-subtle: #A89F91;
+
+  /* Primary - Ember */
+  --primary: #E07A5F;
+  --primary-hover: #E8927A;
+  --primary-muted: #C4725E;
+
+  /* Secondary - Starlight Gold */
+  --secondary: #E4C883;
+  --secondary-hover: #ECD89A;
+  --secondary-muted: #D4A853;
+
+  /* Accent */
+  --accent: #C4A67A;
+  --accent-hover: #D4B68A;
+
+  /* Surface colors */
+  --card: #252019;
+  --card-hover: #2D261F;
+  --border: #3D342A;
+  --border-subtle: #332B22;
+
+  /* Semantic */
+  --success: #8AB58E;
+  --warning: #E4C883;
+  --error: #E07A5F;
+
+  /* Special */
+  --oasis: linear-gradient(135deg, #5A9E8F 0%, #4A8E7F 100%);
+  --dune-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   TAILWIND THEME INTEGRATION
+   ───────────────────────────────────────────────────────────────── */
 @theme inline {
   --color-background: var(--background);
+  --color-background-subtle: var(--background-subtle);
+  --color-background-muted: var(--background-muted);
+
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-muted: var(--primary-muted);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-muted: var(--secondary-muted);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-source-serif);
+  --font-display: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─────────────────────────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   TYPOGRAPHY
+   ───────────────────────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+/* Prose for articles */
+.prose-rimal {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-links: var(--primary);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-quotes: var(--foreground-muted);
+  --tw-prose-quote-borders: var(--primary);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   DECORATIVE ELEMENTS
+   ───────────────────────────────────────────────────────────────── */
+
+/* Sand texture overlay */
+.sand-texture {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.dark .sand-texture {
+  opacity: 0.05;
+}
+
+/* Dune wave pattern */
+.dune-divider {
+  background: var(--border);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C200,120 400,0 600,60 C800,120 1000,0 1200,60 L1200,120 L0,120 Z' fill='%23000'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  height: 60px;
+  width: 100%;
+}
+
+/* Oasis badge gradient */
+.badge-oasis {
+  background: var(--oasis);
+  color: white;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   ANIMATIONS
+   ───────────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes sand-drift {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(5px) translateY(-2px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--background) 0%,
+    var(--background-subtle) 50%,
+    var(--background) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-sand-drift {
+  animation: sand-drift 8s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   INTERACTIVE ELEMENTS
+   ───────────────────────────────────────────────────────────────── */
+
+/* Link hover - trace dans le sable */
+.link-trace {
+  position: relative;
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.link-trace::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.link-trace:hover::after {
+  width: 100%;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px var(--dune-shadow);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SCROLLBAR
+   ───────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-subtle);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   SELECTION
+   ───────────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+.dark ::selection {
+  background: var(--secondary);
+  color: var(--background);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   FOCUS STYLES
+   ───────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   UTILITY CLASSES
+   ───────────────────────────────────────────────────────────────── */
+.text-balance {
+  text-wrap: balance;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
